@@ -1,5 +1,7 @@
 package com.application.vetclinic.model;
 
+import com.application.vetclinic.dto.PetId;
+import com.application.vetclinic.dto.PetRegistrationData;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,4 +23,16 @@ public class Pet {
     private String species;
     private String breed;
     private String color;
+
+
+    public Pet(PetRegistrationData petRegistrationData) {
+        this.name = petRegistrationData.name();
+        this.species = petRegistrationData.species();
+        this.breed = petRegistrationData.breed();
+        this.color = petRegistrationData.color();
+    }
+
+    public Pet(PetId petId) {
+        this.id = petId.id();
+    }
 }
