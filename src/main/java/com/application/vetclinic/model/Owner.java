@@ -1,5 +1,6 @@
 package com.application.vetclinic.model;
 
+import com.application.vetclinic.dto.OwnerRegistrationData;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,7 +22,18 @@ public class Owner {
     private String name;
     private String LastName;
     private String Phone;
-    @OneToOne
-    @JoinColumn(name = "fk_id_pet", referencedColumnName = "id")
+    @OneToOne(orphanRemoval = true)
+    @JoinColumn(
+            name = "fk_id_pet",
+            referencedColumnName = "id"
+    )
     private Pet pet;
+
+    public Owner(OwnerRegistrationData ownerRegistrationData) {
+        this.dni = ownerRegistrationData.dni();
+        this.name = ownerRegistrationData.name();
+        this.LastName = ownerRegistrationData.lastName();
+        this.Phone = ownerRegistrationData.phone();
+        this.pet = new Pet(ownerRegistrationData.petId());
+    }
 }
