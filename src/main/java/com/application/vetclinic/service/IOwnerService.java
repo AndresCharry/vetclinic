@@ -9,4 +9,5 @@ public interface IOwnerService {
     public Long createOwner(OwnerRegistrationData ownerRegistrationData);
     public OwnerData getOwner(Long id);
     public Page<OwnerData> getOwnersPage(Pageable pageable);
+    public Long updateOwner(OwnerData ownerData);
 }

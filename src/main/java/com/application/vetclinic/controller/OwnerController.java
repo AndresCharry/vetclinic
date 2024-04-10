@@ -36,4 +36,11 @@ public class OwnerController {
     public ResponseEntity<Page<OwnerData>> getOwnersPage(@PageableDefault Pageable pageable) {
         return ResponseEntity.ok(ownerService.getOwnersPage(pageable));
     }
+
+    @PutMapping("/update")
+    @Transactional
+    public ResponseEntity<OwnerData> updateOwner(@RequestBody @Valid OwnerData ownerData) {
+        Long id = ownerService.updateOwner(ownerData);
+        return ResponseEntity.ok(getOwner(id).getBody());
+    }
 }

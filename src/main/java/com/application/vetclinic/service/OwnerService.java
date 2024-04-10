@@ -39,4 +39,11 @@ public class OwnerService implements IOwnerService{
                                                        .toList();
         return new PageImpl<>(listOwnersData, pageable, listOwnersData.size());
     }
+
+    @Override
+    public Long updateOwner(OwnerData ownerData) {
+        Owner owner = ownerRepository.getReferenceById(ownerData.id());
+        owner.updateData(ownerData);
+        return owner.getId();
+    }
 }

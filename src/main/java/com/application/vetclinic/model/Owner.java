@@ -1,5 +1,6 @@
 package com.application.vetclinic.model;
 
+import com.application.vetclinic.dto.OwnerData;
 import com.application.vetclinic.dto.OwnerRegistrationData;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -35,5 +36,17 @@ public class Owner {
         this.LastName = ownerRegistrationData.lastName();
         this.Phone = ownerRegistrationData.phone();
         this.pet = new Pet(ownerRegistrationData.petId());
+    }
+
+    public void updateData(OwnerData ownerData) {
+        this.id = ownerData.id();
+        this.dni = ownerData.dni();
+        this.name = ownerData.name();
+        this.LastName = ownerData.lastName();
+        this.Phone = ownerData.phone();
+        if (this.pet == null || !this.pet.getId().equals(ownerData.petId().id())) {
+            System.out.println(1);
+            this.pet = new Pet(ownerData.petId());
+        }
     }
 }
