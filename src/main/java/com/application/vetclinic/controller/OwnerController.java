@@ -43,4 +43,12 @@ public class OwnerController {
         Long id = ownerService.updateOwner(ownerData);
         return ResponseEntity.ok(getOwner(id).getBody());
     }
+
+    @DeleteMapping("/delete/{id}")
+    @Transactional
+    public ResponseEntity deleteOwner(@PathVariable Long id) {
+        ownerService.deleteOwner(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }

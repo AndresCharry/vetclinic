@@ -10,4 +10,5 @@ public interface IOwnerService {
     public OwnerData getOwner(Long id);
     public Page<OwnerData> getOwnersPage(Pageable pageable);
     public Long updateOwner(OwnerData ownerData);
+    public void deleteOwner(Long id);
 }

@@ -46,4 +46,9 @@ public class OwnerService implements IOwnerService{
         owner.updateData(ownerData);
         return owner.getId();
     }
+
+    @Override
+    public void deleteOwner(Long id) {
+        ownerRepository.deleteById(id);
+    }
 }
