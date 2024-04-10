@@ -38,4 +38,11 @@ public class PetService implements IPetService {
                                                   .toList();
         return new PageImpl<>(listPetsPage, pageable, listPetsPage.size());
     }
+
+    @Override
+    public Long updatePet(PetData petData) {
+        Pet pet = petRepository.getReferenceById(petData.id());
+        pet.updateData(petData);
+        return pet.getId();
+    }
 }

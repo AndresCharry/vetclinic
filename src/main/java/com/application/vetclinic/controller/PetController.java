@@ -23,7 +23,7 @@ public class PetController {
     @Transactional
     public ResponseEntity<PetData> createPet(@RequestBody @Valid PetRegistrationData petRegistrationData) {
         Long id = petService.createPet(petRegistrationData);
-        return ResponseEntity.ok(this.getPet(id)).getBody();
+        return ResponseEntity.ok(this.getPet(id).getBody());
     }
 
     @GetMapping("/get")
@@ -34,5 +34,12 @@ public class PetController {
     @GetMapping("/get/page")
     public ResponseEntity<Page<PetData>> getPetsPage(@PageableDefault Pageable pageable) {
         return ResponseEntity.ok(petService.getPetsPage(pageable));
+    }
+
+    @PutMapping("/update")
+    @Transactional
+    public ResponseEntity<PetData> updatePet(@RequestBody @Valid PetData petData) {
+        Long id = petService.updatePet(petData);
+        return ResponseEntity.ok(this.getPet(id).getBody());
     }
 }

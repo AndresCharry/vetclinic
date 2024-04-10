@@ -1,5 +1,6 @@
 package com.application.vetclinic.model;
 
+import com.application.vetclinic.dto.PetData;
 import com.application.vetclinic.dto.PetId;
 import com.application.vetclinic.dto.PetRegistrationData;
 import jakarta.persistence.*;
@@ -34,5 +35,13 @@ public class Pet {
 
     public Pet(PetId petId) {
         this.id = petId.id();
+    }
+
+    public void updateData(PetData petData){
+        this.id = petData.id();
+        this.name = petData.name();
+        this.species = petData.species();
+        this.breed = petData.breed();
+        this.color = petData.color();
     }
 }
