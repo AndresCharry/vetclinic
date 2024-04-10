@@ -42,4 +42,11 @@ public class PetController {
         Long id = petService.updatePet(petData);
         return ResponseEntity.ok(this.getPet(id).getBody());
     }
+
+    @DeleteMapping("/delete")
+    @Transactional
+    public ResponseEntity deletePet(@RequestParam Long id) {
+        petService.deletePet(id);
+        return ResponseEntity.ok().build();
+    }
 }

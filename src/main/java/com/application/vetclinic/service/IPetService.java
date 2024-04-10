@@ -10,4 +10,5 @@ public interface IPetService {
     public PetData getPet(Long id);
     public Page<PetData> getPetsPage(Pageable pageable);
     public Long updatePet(PetData petData);
+    public void deletePet(Long id);
 }

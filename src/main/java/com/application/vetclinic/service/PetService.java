@@ -45,4 +45,10 @@ public class PetService implements IPetService {
         pet.updateData(petData);
         return pet.getId();
     }
+
+    @Override
+    public void deletePet(Long id) {
+        Pet pet = petRepository.getReferenceById(id);
+        petRepository.delete(pet);
+    }
 }
