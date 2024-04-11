@@ -11,4 +11,5 @@ public interface IPetService {
     public Page<PetData> getPetsPage(Pageable pageable);
     public Long updatePet(PetData petData);
     public void deletePet(Long id);
+    public Page<PetData> getPetsSpeciesAndBreedPage(String species, String breed, Pageable pageable);
 }

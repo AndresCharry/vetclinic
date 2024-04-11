@@ -51,4 +51,17 @@ public class PetService implements IPetService {
         Pet pet = petRepository.getReferenceById(id);
         petRepository.delete(pet);
     }
+
+    @Override
+    public Page<PetData> getPetsSpeciesAndBreedPage(String species, String breed, Pageable pageable) {
+        List<PetData> listPetData = petRepository.findAllPetsWithSpeciesAndBreed(species,breed);
+                                                 /*.stream()
+                                                 .map(PetData::new)
+                                                 .toList();
+
+                                                  */
+        return new PageImpl<>(listPetData, pageable, listPetData.size());
+    }
+
+
 }

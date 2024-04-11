@@ -49,4 +49,11 @@ public class PetController {
         petService.deletePet(id);
         return ResponseEntity.ok().build();
     }
+
+    @GetMapping("/getPage/WithSpeciesAndBreed")
+    public ResponseEntity<Page<PetData>> getPetsSpeciesAndBreedPage(@RequestParam String species,
+                                                                    @RequestParam String breed,
+                                                                    @PageableDefault Pageable pageable) {
+        return ResponseEntity.ok(petService.getPetsSpeciesAndBreedPage(species,breed,pageable));
+    }
 }
