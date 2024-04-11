@@ -1,5 +1,6 @@
 package com.application.vetclinic.service;
 
+import com.application.vetclinic.dto.OwnerAndPetData;
 import com.application.vetclinic.dto.OwnerData;
 import com.application.vetclinic.dto.OwnerRegistrationData;
 import com.application.vetclinic.model.Owner;
@@ -50,5 +51,11 @@ public class OwnerService implements IOwnerService{
     @Override
     public void deleteOwner(Long id) {
         ownerRepository.deleteById(id);
+    }
+
+    @Override
+    public OwnerAndPetData getOwnerWithPet(Long id) {
+        Owner owner = ownerRepository.getReferenceById(id);
+        return new OwnerAndPetData(owner);
     }
 }

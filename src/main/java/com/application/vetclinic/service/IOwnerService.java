@@ -1,5 +1,6 @@
 package com.application.vetclinic.service;
 
+import com.application.vetclinic.dto.OwnerAndPetData;
 import com.application.vetclinic.dto.OwnerData;
 import com.application.vetclinic.dto.OwnerRegistrationData;
 import org.springframework.data.domain.Page;
@@ -11,4 +12,5 @@ public interface IOwnerService {
     public Page<OwnerData> getOwnersPage(Pageable pageable);
     public Long updateOwner(OwnerData ownerData);
     public void deleteOwner(Long id);
+    public OwnerAndPetData getOwnerWithPet(Long id);
 }

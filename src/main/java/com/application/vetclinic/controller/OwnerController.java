@@ -1,5 +1,6 @@
 package com.application.vetclinic.controller;
 
+import com.application.vetclinic.dto.OwnerAndPetData;
 import com.application.vetclinic.dto.OwnerData;
 import com.application.vetclinic.dto.OwnerRegistrationData;
 import com.application.vetclinic.service.IOwnerService;
@@ -49,6 +50,11 @@ public class OwnerController {
     public ResponseEntity deleteOwner(@PathVariable Long id) {
         ownerService.deleteOwner(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/getWithPet/{id}")
+    public ResponseEntity<OwnerAndPetData> getOwnerWithPet(@PathVariable Long id) {
+        return ResponseEntity.ok(ownerService.getOwnerWithPet(id));
     }
 
 }
